@@ -23,9 +23,12 @@
    pip install -r requirements.txt
    ```
 3.如果你使用finalshell，上一步的cd命令后直接会转到openloop-in-ubuntu22文件夹，找到并打开`accounts.txt`文件，填写邮件和密码
+
 **需要使用代理则必须1账号对应1IP
+
 4.填好后`python openloop-bot.py`或`python3 openloop-bot.py`
 
 5.运行一次2选项，自动获取token
+
 **集成了注册功能，未注册的邮箱会被自动注册，如果是未注册的账户建议再跑一次选项2确保获取token
 6.继续运行1选项即可
