@@ -19,15 +19,10 @@ class Colors:
     WHITE = Fore.WHITE
     RESET = Style.RESET_ALL
 
-banner = """
-               ╔═╗╔═╦╗─╔╦═══╦═══╦═══╦═══╗
-               ╚╗╚╝╔╣║─║║╔══╣╔═╗║╔═╗║╔═╗║
-               ─╚╗╔╝║║─║║╚══╣║─╚╣║─║║║─║║
-               ─╔╝╚╗║║─║║╔══╣║╔═╣╚═╝║║─║║
-               ╔╝╔╗╚╣╚═╝║╚══╣╚╩═║╔═╗║╚═╝║
-               ╚═╝╚═╩═══╩═══╩═══╩╝─╚╩═══╝
-               我的gihub：github.com/Gzgod
-               我的推特：推特雪糕战神@Hy78516012                   """
+banner = """=======================================
+               我的gihub：github.com/zhuochen0410
+               我的推特：濯尘@zhuochen0410      
+            ======================================="""
 
 def logger(message, level='info', value=""):
     now = time.strftime('%Y-%m-%dT%H:%M:%S')
@@ -78,20 +73,20 @@ async def share_bandwidth(token, proxy=None):
 
         if 'data' in data and 'balances' in data['data']:
             balance = data['data']['balances'].get('POINT', 'N/A')
-            logger(f"分享带宽成功 信息: {Colors.YELLOW}{data.get('message', '无信息')}{Colors.RESET} | "
+            logger(f"成功 信息: {Colors.YELLOW}{data.get('message', '无信息')}{Colors.RESET} | "
                    f"分数: {Colors.YELLOW}{quality}{Colors.RESET} | "
-                   f"总收益: {Colors.YELLOW}{balance}{Colors.RESET}")
+                   f"总分: {Colors.YELLOW}{balance}{Colors.RESET}")
         else:
             logger(f"意外的响应格式: {data}", 'warning')
 
     except requests.RequestException as e:
-        logger(f"分享带宽时出错: {e}", 'error')
+        logger(f"错误: {e}", 'error')
 
 async def share_bandwidth_for_all_tokens(proxies=None):
     tokens = get_tokens()
     for index, token in enumerate(tokens):
         proxy = proxies[index] if proxies and index < len(proxies) else None
-        logger(f"正在为第 {index + 1} 个账号分享带宽...", 'info')
+        logger(f"正在尝试第 {index + 1} 个账号...", 'info')
         await share_bandwidth(token, proxy)
 
 def get_account_info():
@@ -166,7 +161,7 @@ def main_menu():
     while True:
         print(Colors.MAGENTA + banner + Colors.RESET)
         print(f"{Colors.YELLOW}1. 启动节点")
-        print(f"2. 注册或获取Token")
+        print(f"2. 注册/获取Token")
         print(f"3. 退出")
         choice = ask_question(f"{Colors.WHITE}请选择 (1, 2, 或 3): {Colors.RESET}")
 
